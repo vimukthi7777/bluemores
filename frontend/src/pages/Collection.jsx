@@ -23,7 +23,7 @@ const Collection = () => {
   }
 
   const toggleSubCategory = (e) => {
-    if(subCategory.includes(e.target.value)){
+    if(subcategory.includes(e.target.value)){
       setSubCategory(prev => prev.filter(item => item !== e.target.value));
     }
     else{
@@ -32,18 +32,31 @@ const Collection = () => {
   }
 
   const applyFilter = () => {
-    let productsCopy = products.slice();
-    if(showSearch && search){
-      productsCopy = productsCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
-    }
-    if(category.length > 0){
-      productsCopy = productsCopy.filter(item => category.includes(item.category))
-    }
-    if(subcategory.length > 0){
-      productsCopy = productsCopy.filter(item => subcategory.includes(item.subcategory))
-    }
-    setFilterProducts(productsCopy)
+  let productsCopy = products.slice();
+
+  // Search Filter
+  if (showSearch && search) {
+    productsCopy = productsCopy.filter(item => 
+      item.name.toLowerCase().includes(search.toLowerCase())
+    );
   }
+
+  // Category Filter
+  if (category.length > 0) {
+    productsCopy = productsCopy.filter(item => 
+      category.includes(item.category) // Ensure these matches exactly (e.g., "Men")
+    );
+  }
+
+  // SubCategory Filter
+  if (subcategory.length > 0) {
+    productsCopy = productsCopy.filter(item => 
+      subcategory.includes(item.subCategory) // Double-check if it's item.subcategory or item.subCategory
+    );
+  }
+
+  setFilterProducts(productsCopy);
+}
 
   const sortProduct = () => {
     let fpCopy = filterProducts.slice();
@@ -61,10 +74,10 @@ const Collection = () => {
   }
   useEffect(()=>{
     applyFilter();
-  }, [category, subcategory, search, showSearch, products])
+  }, [category, subcategory, search, showSearch, products]);
   useEffect(()=>{
     sortProduct();
-  }, sortType)
+  }, [sortType]);
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
       {/*Filter options */}
@@ -72,7 +85,7 @@ const Collection = () => {
       <p onClick={()=>setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS</p> 
       <img className={`h-3 sm:hidden ${showFilter ? 'rotate-90' : ''}`} src={assets.dropdown_icon} alt="" />
       {/* Category Filter */} 
-      <div className={`border border-gray-300 p1-5 py-3 mt-6 ${showFilter ? '' : 'hidden'} sm:block`}> 
+      <div className={`border border-gray-300 p1-5 py-3 mt-6 p-6 ${showFilter ? '' : 'hidden'} sm:block`}> 
         <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
         <div className='flex flex-col gap-2 tex-sm font-ligh text-gray-700'>
           <p className='flex gap-2'>
@@ -87,17 +100,23 @@ const Collection = () => {
         </div>
       </div>
       {/* Subcategory filters */}
-      <div className={`border border-gray-300 p1-5 py-3 mt-6 ${showFilter ? '' : 'hidden'} sm:block`}> 
+      <div className={`border border-gray-300 p1-5 py-3 mt-6 p-6 ${showFilter ? '' : 'hidden'} sm:block`}> 
         <p className='mb-3 text-sm font-medium'>TYPE</p>
         <div className='flex flex-col gap-2 tex-sm font-ligh text-gray-700'>
           <p className='flex gap-2'>
             <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Topwear'}/>Topwear
           </p>
           <p className='flex gap-2'>
-            <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Bottomwear'}/>Bottomwear
+            <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Saree'}/>Saree
           </p>
           <p className='flex gap-2'>
-            <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Winterwear'}/>Winterwear
+            <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Bracelet'}/>Bracelet
+          </p>
+          <p className='flex gap-2'>
+            <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Necklace'}/>Necklace
+          </p>
+          <p className='flex gap-2'>
+            <input className='w-3' type="checkbox" onChange={toggleSubCategory} value={'Earring'}/>Earring
           </p>
         </div>
       </div>

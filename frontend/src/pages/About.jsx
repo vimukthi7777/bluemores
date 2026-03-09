@@ -12,10 +12,10 @@ const About = () => {
       <div className='my-10 flex flex-col md:flex-row gap-16'>
         <img className='w-full md:max-w-[450px]' src={assets.about_img} alt="" />
         <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
-          <p>Forever was born out of a passion for innovation and a desire to revolutionize the way people shop online. Our journey began with a simple idea: to provide a platform where customers can easily discover, explore, and purchase a wide range of products from the comfort of their homes.</p>
-          <p>Since our inception, we've worked tirelessly to curate a diverse selection of high-quality products that cater to every taste and preference. From fashion and beauty to electronics and home essentials, we offer an extensive collection sourced from trusted brands and suppliers.</p>
+          <p>Bluemores was born from a deep passion for heritage craftsmanship and timeless design. Specializing in batik and custom jewelry, we are dedicated to creating pieces that celebrate culture, artistry, and individuality. Each design reflects the beauty of traditional techniques blended with modern elegance, allowing our customers to wear something truly meaningful and unique.</p>
+          <p>From handcrafted batik creations to personalized jewelry made with care and precision, Bluemores focuses on quality, authenticity, and attention to detail. We believe that fashion is more than style — it is a form of self-expression. Every piece we create tells a story, honoring tradition while embracing contemporary sophistication.</p>
           <b className='text-gray-800'>Our Mission</b>
-          <p>Our mission at Forever is to empower customers with choice, convenience, and confidence. We're dedicated to providing a seamless shopping experience that exceeds expectations, from browsing and ordering to delivery and beyond.</p>
+          <p>Our mission at Bluemores is to preserve the art of batik and elevate custom jewelry through exceptional craftsmanship and thoughtful design. We are committed to delivering high-quality, meaningful pieces that inspire confidence, celebrate individuality, and provide a seamless, enjoyable shopping experience for every customer.</p>
         </div>
       </div>
       <div className='text-xl py-4'>
