@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import mongoose from "mongoose"
+=======
+import mongoose from 'mongoose'
+>>>>>>> dev
 
 const connectDB = async() => {
     mongoose.connection.on('connected', ()=>{

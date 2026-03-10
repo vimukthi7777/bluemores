@@ -6,7 +6,11 @@
 
 # Logs
 /*.log
+<<<<<<< HEAD
 logs/
+=======
+logs/gi
+>>>>>>> dev
 
 # Build/Dist
 /build
