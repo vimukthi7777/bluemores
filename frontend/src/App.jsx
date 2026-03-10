@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import AR from './pages/AR';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Product from './pages/Product';
@@ -14,6 +15,7 @@ import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Verify from './pages/Verify';
 
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
       <SearchBar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/ar" element={<AR />} />
         <Route path="/collection" element={<Collection />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -32,6 +35,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/verify" element={<Verify />} />
       </Routes>
       <Footer/>
     </div>

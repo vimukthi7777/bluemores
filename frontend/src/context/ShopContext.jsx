@@ -8,14 +8,14 @@ import { useNavigate } from 'react-router-dom';
 export const ShopContext = createContext(); 
 
 const ShopContextProvider = (props) => { 
-    const currency = '$'; 
+    const currency = 'Rs.'; 
     const delivery_fee = 10; 
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     console.log(import.meta.env)
     console.log(backendUrl)
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState({});
     const [products, setProducts] = useState([])
     const [token, setToken] = useState('')
     const navigate = useNavigate();
@@ -118,18 +118,20 @@ const ShopContextProvider = (props) => {
         }
     }
 
-    const getUserCart = async (token) => {
-        try{
-            const response = await axios.post(backendUrl + '/api/cart/get', {}, {headers: {token}})
-            if(response.data.success){
-                setCartItems(response.data.cartData);
-            }
+    // Inside ShopContext.jsx
+const getUserCart = async (token) => {
+    try {
+        const response = await axios.post(backendUrl + '/api/cart/get', {}, { headers: { token } });
+        if (response.data.success) {
+            // Ensure response.data.cartData is an object, otherwise default to {}
+            setCartItems(response.data.cartData || {}); 
         }
-        catch (error){
-            console.log(error)
-            toast.error(error.message)
-        }
+    } catch (error) {
+        console.log(error);
+        toast.error(error.message);
     }
+};
+
     useEffect(()=>{
         getProductsData()
     }, [token])
